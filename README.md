@@ -8,7 +8,7 @@
 ## Overview
 
 - The **podconfig.YAML** file contains the configuration for a single pod. For this instance, the pod is configured with two **Nvidia pytorch containers** , each container is mounted with [Volumes](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) - persistent volumes and configMaps.
-- The pods are also configured to run the python script that has been injected into the container using configmaps and produce output files that are stored in a storage account.
+- The pods are also configured to run the **python script** that has been injected into the container using **configmaps and produce output files that are stored in a storage account.**
 
 ## Environment Setup using Azure CLI
 1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). 
