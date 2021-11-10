@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dara-pod78
+spec:
+  containers:
+    - name: pytorch
+      image: daraRegistry1.azurecr.io/nvcr.io/nvidia/pytorch:v21.09
+      volumeMounts: 
+      - mountPath: /workspace/dara
+        name: haha
+      - mountPath: /workspace/store
+        name: pv
+      - mountPath: /workspace/inputfiles
+        name: python-config
+      imagePullPolicy: IfNotPresent
+      command: [ "/bin/bash", "-c", "--" ]
+      args: 
+        - while true;
+          do sleep 3;
+          python /workspace/inputfiles/script.py;
+          done;
+    - name: pytorch2
+      image: daraRegistry1.azurecr.io/nvcr.io/nvidia/pytorch:v21.09
+      volumeMounts: 
+      - mountPath: /workspace/store
+        name: pv
+      - mountPath: /workspace/inputfiles
+        name: python-config
+      imagePullPolicy: IfNotPresent
+      command: [ "/bin/bash", "-c", "--" ]
+      args: 
+        - while true;
+          do sleep 3;
+          python /workspace/inputfiles/script.py;
+          done;
+  restartPolicy: Never      
+  imagePullSecrets:
+    - name: testing-sec
+  volumes:
+    - name: haha
+      hostPath:
+        path: /C:/Users/dakpan
+    - name: python-config
+      configMap:
+        name: input
+    - name: pv
+      persistentVolumeClaim:
+        claimName: my-azurefile2
