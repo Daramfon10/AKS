@@ -8,7 +8,7 @@
 ## Overview
 
 - The **podconfig.YAML** file contains the configuration for a single pod. For this instance, the pod is configured with two **Nvidia pytorch containers** , each container is mounted with [Volumes](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) - persistent volumes and configMaps.
-- The pods are also configured to run the python script that has been injected into the container using configmaps and produce output files that are stored in a storage account.
+- The pods are also configured to run the **python script** that has been injected into the container using **configmaps and produce output files that are stored in a storage account.**
 
 ## Environment Setup using Azure CLI
 1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). 
@@ -25,7 +25,7 @@ For this exercise we will need to create configMap, storageclass and persistent 
 4. Create the storage class resource - `kubectl create -f storageclass.YAML`
 5. Create the persistent volume resource with the storage class provisioned to it - `kubectl create -f pv.YAML`
 
-## Setting up the pod configuration file
+## Setting Up the Pod Configuration File
 
 Now that we have all our resources in the cluster, we need to make sure we have the **podconfig.YAML** file configured properly before we run the file.
 1. Change directory to the home directory in the clone repository - `cd AKS`
@@ -41,7 +41,7 @@ Now that we have all our resources in the cluster, we need to make sure we have 
    - The secret name should be updated with the name for the secret created in **step 3**
 5. Save the file.
  
- ## Creating a pod resource
+ ## Creating a Pod Resource
  
  We can now proceed to creating a pod resource using the **podconfig.YAML** file.
  1. Create the pod resource - `kubectl create -f podconfig.YAML`
@@ -53,10 +53,10 @@ Now that we have all our resources in the cluster, we need to make sure we have 
  
  The following steps helps verify that our pod was configured properly with the configMap and persistent volume mounted in the containers and the script executed once the containers have been created:
  1. Launch the containers in interactive mode by running - `kubectl exec -it <Pod Name> /bin/bash`
- 2. While inside the container, verify that the configMap was mounted in the container. There should be two input files(jon.json & script.py) - `ls inputfiles/`
- 3. List the files in the store folder to verify that **script.py** was executed properly. There should be three output files in the store directory - `ls store/`
+ 2. While inside the container, verify that the configMap was mounted in the container. There should be two input files (**jon.json & script.py**) - `ls inputfiles/`
+ 3. List the files in the store folder to verify that **script.py** was executed properly. There should be **three output files** in the store directory - `ls store/`
  4. To verify that the output files are stored in a storage account:
-    - Log into the [Azure Portal](portal.azure.com)
+    - Login to the [Azure Portal](portal.azure.com)
     - Click on resource groups
     - With your subscription filtered, search for a resource group that begins with *MC_myResourceGroup_myAKSCluster_* .This contains all of the infrastructure resources associated with the cluster.
     - In the resources list for the resource group, select the storage item of storage account type. 
