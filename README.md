@@ -53,10 +53,10 @@ Now that we have all our resources in the cluster, we need to make sure we have 
  
  The following steps helps verify that our pod was configured properly with the configMap and persistent volume mounted in the containers and the script executed once the containers have been created:
  1. Launch the containers in interactive mode by running - `kubectl exec -it <Pod Name> /bin/bash`
- 2. While inside the container, verify that the configMap was mounted in the container. There should be two input files(jon.json & script.py) - `ls inputfiles/`
- 3. List the files in the store folder to verify that **script.py** was executed properly. There should be three output files in the store directory - `ls store/`
+ 2. While inside the container, verify that the configMap was mounted in the container. There should be two input files (**jon.json & script.py**) - `ls inputfiles/`
+ 3. List the files in the store folder to verify that **script.py** was executed properly. There should be **three output files** in the store directory - `ls store/`
  4. To verify that the output files are stored in a storage account:
-    - Log into the [Azure Portal](portal.azure.com)
+    - Login to the [Azure Portal](portal.azure.com)
     - Click on resource groups
     - With your subscription filtered, search for a resource group that begins with *MC_myResourceGroup_myAKSCluster_* .This contains all of the infrastructure resources associated with the cluster.
     - In the resources list for the resource group, select the storage item of storage account type. 
