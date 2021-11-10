@@ -25,7 +25,7 @@ For this exercise we will need to create configMap, storageclass and persistent 
 4. Create the storage class resource - `kubectl create -f storageclass.YAML`
 5. Create the persistent volume resource with the storage class provisioned to it - `kubectl create -f pv.YAML`
 
-## Setting up the pod configuration file
+## Setting Up the Pod Configuration File
 
 Now that we have all our resources in the cluster, we need to make sure we have the **podconfig.YAML** file configured properly before we run the file.
 1. Change directory to the home directory in the clone repository - `cd AKS`
@@ -41,7 +41,7 @@ Now that we have all our resources in the cluster, we need to make sure we have 
    - The secret name should be updated with the name for the secret created in **step 3**
 5. Save the file.
  
- ## Creating a pod resource
+ ## Creating a Pod Resource
  
  We can now proceed to creating a pod resource using the **podconfig.YAML** file.
  1. Create the pod resource - `kubectl create -f podconfig.YAML`
