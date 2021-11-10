@@ -20,15 +20,16 @@
 
 For this exercise we will need to create configMap, storageclass and persistent volume resources in the cluster using our customized files. The steps below give a walkthrough on how to create these resources:
 1. Clone the repository - `git clone https://github.com/Daramfon10/AKS.git`
-2. Change directory to the volume directory in the cloned repository - `cd AKS/volumes`
+2. Change directory to the input files directory in the cloned repository - `cd AKS/input-files`
 3. Create the configMap resource from two files - `kubectl create configmap input --from-file jon.json --from-file script.py`
-4. Create the storage class resource - `kubectl create -f storageclass.YAML`
-5. Create the persistent volume resource with the storage class provisioned to it - `kubectl create -f pv.YAML`
+4. Change directory to the volume directory - `cd ..\volumes\`
+5. Create the storage class resource - `kubectl create -f storageclass.YAML`
+6. Create the persistent volume resource with the storage class provisioned to it - `kubectl create -f pv.YAML`
 
 ## Setting Up the Pod Configuration File
 
 Now that we have all our resources in the cluster, we need to make sure we have the **podconfig.YAML** file configured properly before we run the file.
-1. Change directory to the home directory in the clone repository - `cd AKS`
+1. Change directory to the home directory in the clone repository - `cd ..`
 2. Login to your Azure container registry - `az acr login --name <Registry Name>`
 3. Create an image pull secret for Kubernetes to store information needed to authenticate your registry - `kubectl create secret docker-registry <secret-name> \
     --docker-server=<REGISTRY_NAME>.azurecr.io \
